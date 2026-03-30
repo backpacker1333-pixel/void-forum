@@ -6,6 +6,7 @@ import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 import UserBadge from "@/components/UserBadge";
 import ReplyForm from "@/components/ReplyForm";
+import ModActions from "@/components/ModActions";
 
 export const revalidate = 0;
 
@@ -137,6 +138,15 @@ export default async function ThreadPage({
             </div>
           ))}
         </div>
+      )}
+
+      {/* Mod actions */}
+      {session && (session.user.role === "ADMIN" || session.user.role === "MODERATOR") && (
+        <ModActions
+          threadId={thread.id}
+          isPinned={thread.isPinned}
+          isLocked={thread.isLocked}
+        />
       )}
 
       {/* Reply form */}

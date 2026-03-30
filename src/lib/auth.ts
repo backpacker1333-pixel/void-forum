@@ -27,6 +27,8 @@ export const authOptions: NextAuthOptions = {
 
         if (!passwordMatch) return null;
 
+        if (user.banned) return null;
+
         return {
           id: user.id,
           email: user.email,

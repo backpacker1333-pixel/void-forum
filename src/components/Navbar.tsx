@@ -45,6 +45,14 @@ export default function Navbar() {
               <span className="text-xs text-yellow-400 hidden md:block">
                 {session.user.credits} cr
               </span>
+              {(session.user.role === "ADMIN" || session.user.role === "MODERATOR") && (
+                <Link
+                  href="/admin"
+                  className="text-xs bg-red-900/30 hover:bg-red-900/50 text-red-400 border border-red-900/50 font-semibold px-3 py-1.5 rounded transition"
+                >
+                  Admin
+                </Link>
+              )}
               <Link
                 href="/new-thread"
                 className="bg-[#6366f1] hover:bg-[#5254cc] text-white text-xs font-semibold px-3 py-1.5 rounded transition"
